@@ -1,6 +1,10 @@
 import React from 'react';
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    console.log("mount")
+  }
   state = {
     count: 0
   };
@@ -10,7 +14,14 @@ class App extends React.Component {
   minus = () => {
     this.setState(Arithmetic => ({count: Arithmetic.count - 1}));
   };
+  componentDidMount(){
+    console.log("rendered")
+  }
+  componentDidUpdate(){
+    console.log("just update")
+  }
   render() {
+    console.log("render")
     return (
       <div>
         <h1>The number is: {this.state.count}</h1>
