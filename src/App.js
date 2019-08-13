@@ -1,58 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const lists = [
-  {
-    id: "1",
-    name: "일",
-    rating: 5,
-  },
-  {
-    id: "2",
-    name: "이",
-    rating: 4,
-  },
-  {
-    id: "3",
-    name: "삼",
-    rating: 4,
+class App extends React.Component {
+  state = {
+    count: 0
+  };
+  add = () => {
+    this.setState(Arithmetic => ({count: Arithmetic.count + 1}));
+  };
+  minus = () => {
+    this.setState(Arithmetic => ({count: Arithmetic.count - 1}));
+  };
+  render() {
+    return (
+      <div>
+        <h1>The number is: {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
   }
-  , {
-    id: "4",
-    name: "사",
-    rating: 5,
-  },
-  {
-    id: "5",
-    name: "오",
-    rating: 3,
-  }
-];
-
-function RenderLists({name, rating}){
-  return (
-    <div>
-      <h1>{name}</h1>
-      <h2>{name} is  {rating}</h2> 
-    </div>
-  );
-}
-RenderLists.propTypes = {
-  name: PropTypes.string.isRequired,
-  rating: PropTypes.number
-};
-function App() {
-  return (
-    <div>
-      {lists.map(list => (
-        <RenderLists
-          key={list.id}
-          name={list.name}
-          rating={list.rating}
-        />
-      ))}
-    </div>
-  );
 }
 
 export default App;
